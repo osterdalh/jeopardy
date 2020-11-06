@@ -1,0 +1,11 @@
+.tableContainer{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.test{
+    opacity:1 !important;
+    border-radius: 0 !important;
+    transform: rotate(90deg) !important;
+    border: 2px solid white;
+}
