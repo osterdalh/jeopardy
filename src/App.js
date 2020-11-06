@@ -1,13 +1,13 @@
 import './App.css';
 
-import Teams from './components/Teams'
+import Page from './components/page'
 
 
 
 function App() {
   return (
-    <div className="App container">
-      <Teams/>
+    <div className="App">
+      <Page/>
     </div>
   );
 }
