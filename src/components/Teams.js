@@ -38,7 +38,7 @@ const TeamScoreBoxConainer = styled.div`
 
 const SelectTeam = styled.div`
 height: 30px;
-width: ${props => `${props.width}%;`}
+width: ${props => `${props.width}%;`};
 display: inline-block;
 background-color: green;
 `
@@ -50,25 +50,26 @@ class Teams extends React.Component {
         this.teamColors = ["red", "green", "yellow"]
 
         this.state = {
-            teams: [{
-                name: 'BB',
-                points: 0,
-                id: 1,
-                color: 'red'
-            },
-            {
-                name: 'BB',
-                points: 0,
-                id: 2,
-                color: 'yellow  '
-            },
-            {
-                name: 'Rollet',
-                points: 0,
-                id: 3,
-                color: 'green'
-
-            }]
+            teams: {
+                0: {
+                    name: 'BB',
+                    points: 32,
+                    id: 0,
+                    color: 'red'
+                },
+                1: {
+                    name: 'Ragars',
+                    points: 0,
+                    id: 1,
+                    color: 'green'
+                },
+                2: {
+                    name: 'Bently',
+                    points: 0,
+                    id: 2,
+                    color: 'blue'
+                }
+            }
         }
     }
 
@@ -76,14 +77,15 @@ class Teams extends React.Component {
 
     handleTeamChange = (e, i) => {
         let teams = [...this.state.teams]
-        teams[i].name = e.target.value
+        teams.i.name = e.target.value
         this.setState({ teams })
 
     }
 
     renderTeamBox = (index) => {
+
         return (
-            <TeamInput style={{ backgroundColor: this.teamColors[index] }} value={this.state.teams[index].name} onChange={e => this.handleTeamChange(e, index)} >
+            <TeamInput style={{ backgroundColor: this.state.teams[index].color }} value={this.state.teams[index].name} onChange={e => this.handleTeamChange(e, index)} >
 
             </TeamInput>
         )
@@ -100,17 +102,35 @@ class Teams extends React.Component {
         )
     }
 
+    addScore = (id, score) => {
+        var oldStateTeams = this.state.teams
+
+        
+        console.log("state", oldStateTeams[id])
+        console.log("score", score)
+        console.log("old", parseInt(oldStateTeams[id].points))
+
+        var updatedTeamScore = parseInt(oldStateTeams[id].points) + parseInt(score)
+        oldStateTeams[id].points = updatedTeamScore
+        console.log("oldState", updatedTeamScore)
+
+        this.setState({ teams: oldStateTeams })
+
+    }
+
     changeColor = (id) => {
         var element = document.getElementById(id)
         // element.style.backgroundColor = "red"
-        // var score = (element.innerText.replace('$', ''))
+        var score = element ? (element.innerText.replace('$', '')) : 0
+
         return (
 
-            <div style={{border: "1px solid black", height: "30px"}}>
+            <div style={{ border: "1px solid black", height: "30px", zIndex: "99" }}>
                 {
-                    this.state.teams.map(team => {
-                        return(
-                            <SelectTeam width={(1/this.state.teams.length)*100} style={{backgroundColor:team.color}} onClick={() => console.log(team.id)}></SelectTeam>
+                    Object.keys(this.state.teams).map(teamId => {
+                        return (
+                            <SelectTeam key={teamId} width={(1 / Object.keys(this.state.teams).length
+                            ) * 100} style={{ backgroundColor: this.state.teams[teamId].color }} onClick={() => this.addScore(teamId, score)}></SelectTeam>
                         )
                     })
                 }
@@ -128,7 +148,7 @@ class Teams extends React.Component {
                 <div className="d-flex justify-content-end">
                     <div className="d-flex justify-content-center">
                         {
-                            this.state.teams.map((team, index) => this.renderTeamScoreBox(index))
+                            Object.keys(this.state.teams).map((team, index) => this.renderTeamScoreBox(index))
                         }
 
                     </div>

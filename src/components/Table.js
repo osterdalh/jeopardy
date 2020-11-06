@@ -29,7 +29,7 @@ const createCol = (title, props) => {
             <Category defaultValue={title} className="col border category">
             </Category>
             <Cell id={`${title}100`} className="col border" onClick={() => props.func(`${title}100`)}>
-            $200
+            $100
             {
                 props.func(`${title}100`)
             }
