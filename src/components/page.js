@@ -7,11 +7,11 @@ class Page extends React.Component {
     constructor() {
         super()
 
-        this.colors = ['red', 'green', 'blue', 'orange',  'purple', 'DeepPink']
+        this.colors = ['red', 'green', 'blue', 'orange', 'purple', 'DeepPink']
         this.state = {
             teams: {
                 0: {
-                    name: 'Team 1', 
+                    name: 'Team 1',
                     score: 0,
                     id: 0,
                     color: 'red',
@@ -39,12 +39,16 @@ class Page extends React.Component {
 
     }
 
+    toggleOp = (cell) => {
+        cell.style.opacity = "0.3"
+    }
+
     handleSelectClick = (teamId, valueId) => {
-        console.log(this.state.teams[teamId].won)
         var element = document.getElementById(valueId)
         var score = element.innerText.replace("$", "")
         var selectedElement = document.getElementById(teamId + valueId)
-
+        console.log("valueId", valueId)
+        this.toggleOp(element.parentElement)
 
 
         //check id team has already won
@@ -92,7 +96,7 @@ class Page extends React.Component {
         var lastKey = keys[keys.length - 1]
 
         delete teams[lastKey];
-        this.setState({teams})
+        this.setState({ teams })
 
     }
     addTeam = () => {
@@ -100,9 +104,9 @@ class Page extends React.Component {
         var keys = Object.keys(teams)
         var lastKey = keys[keys.length - 1]
         var newKey = parseInt(lastKey) + 1
-        
-        if (!newKey){
-            newKey = 0 
+
+        if (!newKey) {
+            newKey = 0
         }
 
         teams[newKey] = {
@@ -113,9 +117,9 @@ class Page extends React.Component {
             won: []
         }
 
-        this.setState({teams})
+        this.setState({ teams })
 
-    
+
 
     }
 

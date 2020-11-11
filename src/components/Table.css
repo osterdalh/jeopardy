@@ -2,6 +2,7 @@
     width: 80%;
     margin: 0 auto;
     border: 1px solid white;
+    position: relative;
 }
 
 .test{
@@ -9,4 +10,12 @@
     border-radius: 0 !important;
     transform: rotate(90deg) !important;
     border: 2px solid white;
+}
+
+.imageContainer{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: ;
 }

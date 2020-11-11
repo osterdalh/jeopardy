@@ -11,7 +11,8 @@ padding: 0;
 padding-top: 15px;
 font-size: 25px;
 width:100%;
-
+opacity: 1;
+transition: opacity 1s;
 `
 
 const Category = styled.input`
@@ -64,19 +65,21 @@ class Table extends React.Component {
         return (
             <div className="tableContainer">
                 <div className="d-flex justify-content-center m-0 ">
+                <div className="imageContainer"></div>
+
                     {
                         categories.map((category, i) => {
                             return (
-                                <div key={category}>
-                                    <Category id={category} defaultValue={category} onChange={(event) => {
+                                <div key={i}>
+                                    <Category id={category} defaultValue={category} value={this.state.categories[i]} onChange={(event) => {
                                         var newCat = categories
                                         newCat[i] = event.target.value
                                         this.setState({ categories: newCat })
-                                    }} className=" border category">
+                                    }} className="border category">
                                     </Category>
+                                    
 
-                                    <Cell onMouseOver={() => {
-                                    }}>
+                                    <Cell>
                                         <span id={category + 100}>100$</span>
                                         <div className=" d-flex justify-content-around pb-2">
                                             {
@@ -86,7 +89,7 @@ class Table extends React.Component {
                                                     return (
 
 
-                                                        <SelectTeam  id={teamId + category + 100} onClick={() => handleClick(teamId, category + 100)}  key={teamId} color={teams[teamId].color}>
+                                                        <SelectTeam id={teamId + category + 100} onClick={() => handleClick(teamId, category + 100)} key={teamId} color={teams[teamId].color}>
 
                                                         </SelectTeam>
                                                     )
@@ -105,7 +108,7 @@ class Table extends React.Component {
                                                     return (
 
 
-                                                        <SelectTeam id={teamId + category + 200} onClick={() => handleClick(teamId, category + 200)}  key={teamId} color={teams[teamId].color}>
+                                                        <SelectTeam id={teamId + category + 200} onClick={() => handleClick(teamId, category + 200)} key={teamId} color={teams[teamId].color}>
 
                                                         </SelectTeam>
                                                     )
@@ -124,7 +127,7 @@ class Table extends React.Component {
                                                     return (
 
 
-                                                        <SelectTeam id={teamId + category + 300} onClick={() => handleClick(teamId, category + 300)}  key={teamId} color={teams[teamId].color}>
+                                                        <SelectTeam id={teamId + category + 300} onClick={() => handleClick(teamId, category + 300)} key={teamId} color={teams[teamId].color}>
 
                                                         </SelectTeam>
                                                     )
@@ -143,7 +146,7 @@ class Table extends React.Component {
                                                     return (
 
 
-                                                        <SelectTeam id={teamId + category + 400} onClick={() => handleClick(teamId, category + 400)}  key={teamId} color={teams[teamId].color}>
+                                                        <SelectTeam id={teamId + category + 400} onClick={() => handleClick(teamId, category + 400)} key={teamId} color={teams[teamId].color}>
 
                                                         </SelectTeam>
                                                     )
@@ -162,7 +165,7 @@ class Table extends React.Component {
                                                     return (
 
 
-                                                        <SelectTeam id={teamId + category + 500} onClick={() => handleClick(teamId, category + 500)}  key={teamId} color={teams[teamId].color}>
+                                                        <SelectTeam id={teamId + category + 500} onClick={() => handleClick(teamId, category + 500)} key={teamId} color={teams[teamId].color}>
 
                                                         </SelectTeam>
                                                     )
@@ -181,7 +184,10 @@ class Table extends React.Component {
 
 
                 </div>
+       
             </div>
+
+
 
 
         )
