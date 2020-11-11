@@ -13,6 +13,7 @@ const TeamInput = styled.input`
     color:white;
     text-align: center;
     width: 100%;
+    font-size: 25px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 1px solid black;
@@ -21,8 +22,10 @@ const TeamInput = styled.input`
 
 const TeamScore = styled.div`
     background-color: white;
+    transition: 1s;
     color: black;
     text-align: center;
+    font-size: 20px;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -30,8 +33,7 @@ const TeamScore = styled.div`
 
 const TeamScoreBoxConainer = styled.div`
     padding: 10px;
-    width: 50px;
-    width: fit-content;
+    width: 230px;
 
 `
 
@@ -56,30 +58,28 @@ class Teams extends React.Component {
     render() {
         const { teams } = this.props
         return (
-            <div className="mb-5">
-                <div className="d-flex justify-content-center">
-                    <div className="d-flex justify-content-center">
-                        {
-                            Object.keys(teams).map(teamId => {
+            <div className="d-flex">
 
-                                return (
+                {
+                    Object.keys(teams).map(teamId => {
 
-                                    <TeamScoreBoxConainer key={teamId}>
-                                        <TeamInput color={teams[teamId].color} defaultValue={teams[teamId].name}></TeamInput>
-                                        <TeamScore> {teams[teamId].score}</TeamScore>
-                                    </TeamScoreBoxConainer>
+                        return (
 
-                                )
-                            })
+                            <TeamScoreBoxConainer key={teamId}>
+                                <TeamInput color={teams[teamId].color} defaultValue={teams[teamId].name}></TeamInput>
+                                <TeamScore> {teams[teamId].score}</TeamScore>
+                            </TeamScoreBoxConainer>
 
-                        }
+                        )
+                    })
 
+                }
 
 
 
-                    </div>
-                </div>
+
             </div>
+
 
         )
     }

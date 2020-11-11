@@ -1,3 +1,15 @@
 .App{
   height: 100%;
 }
+
+
+i{
+  font-size: 30px;
+  color: gray;
+  transition: color 0.5s;
+  cursor: pointer;
+}
+
+i:hover{
+  color: white;
+}

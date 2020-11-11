@@ -67,7 +67,7 @@ class Table extends React.Component {
                     {
                         categories.map((category, i) => {
                             return (
-                                <div>
+                                <div key={category}>
                                     <Category id={category} defaultValue={category} onChange={(event) => {
                                         var newCat = categories
                                         newCat[i] = event.target.value
