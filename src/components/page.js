@@ -88,7 +88,6 @@ class Page extends React.Component {
         otherTeamsIds.forEach(id => {
             if (this.state.teams[id].won.includes(valueId)) {
                 var newScore = this.state.teams[id].score - parseInt(score)
-                console.log("newScore", newScore)
                 var newStateTeams = this.state.teams
                 newStateTeams[id].score = newScore
                 newStateTeams[id].won = newStateTeams[id].won.filter(value => value !== valueId)
