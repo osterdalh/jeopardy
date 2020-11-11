@@ -80,7 +80,6 @@ class Table extends React.Component {
                 imgElement.style.backgroundImage = `url(${this.state.image})`
             });
 
-            console.log("sds", this.state.image, URL.createObjectURL(img))
         }
     };
 
