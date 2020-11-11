@@ -1,7 +1,8 @@
 .tableContainer{
     width: 80%;
-    margin: 0 auto;
+    margin: 10px;
     border: 1px solid white;
+    position: relative;
 }
 
 .test{
@@ -9,4 +10,23 @@
     border-radius: 0 !important;
     transform: rotate(90deg) !important;
     border: 2px solid white;
+}
+
+#imageContainer{
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    height: calc(100% - 60px);
+    background-color: black;
+    z-index: -4;
+    background-size:  100% 100%;
+}
+
+.fa-check-square{
+    color: green;
+}
+
+.selectImage{
+    color: white;
+    font-size: 25px;
 }
