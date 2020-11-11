@@ -1,26 +1,32 @@
 body {
   font-family: 'Orbitron', sans-serif;
   font-family: 'Oxanium', cursive;
-  background: linear-gradient(270deg, #00ffbd, #ee00ff);
-  background-size: 400% 400%;
-
-  -webkit-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
   height: 100vh;
   width: 100vw;
+  
+  background: linear-gradient(322deg, #0affc0, #fffa00, #ffb600, #ff5c00, #00ff42, #00e6ff, #0054ff, #ba00ff, #ff00c8);
+  background-size: 1800% 1800%;
+
+  -webkit-animation: AnimationName 45s ease infinite;
+  -moz-animation: AnimationName 45s ease infinite;
+  animation: AnimationName 45s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0%{background-position:0% 90%}
+  50%{background-position:100% 11%}
+  100%{background-position:0% 90%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 90%}
+  50%{background-position:100% 11%}
+  100%{background-position:0% 90%}
 }
 @keyframes AnimationName {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0%{background-position:0% 90%}
+  50%{background-position:100% 11%}
+  100%{background-position:0% 90%}
 }
-
 #root {
   height: 100%;
 }

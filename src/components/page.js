@@ -15,23 +15,24 @@ class Page extends React.Component {
                     score: 0,
                     id: 0,
                     color: 'red',
-                    won: []
+                    won: [],
+                    imageWon: false
                 },
                 1: {
                     name: 'Team 2',
                     score: 0,
                     id: 1,
                     color: 'green',
-                    won: []
-
+                    won: [],
+                    imageWon: false
                 },
                 2: {
                     name: 'Team 3',
                     score: 0,
                     id: 2,
                     color: 'blue',
-                    won: []
-
+                    won: [],
+                    imageWon: false
                 }
 
             }
@@ -40,14 +41,39 @@ class Page extends React.Component {
     }
 
     toggleOp = (cell) => {
-        cell.style.opacity = "0.3"
+        cell.style.opacity = "0.45"
+    }
+
+    handleImagePoints = (teamId, elementId) => {
+        var element = document.getElementById(elementId)
+
+        //if team has already won
+        if (!this.state.teams[teamId].imageWon) {
+            element.classList.add("test")
+            var newPointsTeam = this.state.teams
+            newPointsTeam[teamId].imageWon = true
+            newPointsTeam[teamId].score = newPointsTeam[teamId].score + 500
+            this.setState({teams: newPointsTeam})
+
+            return
+        } else {
+            var newPointsTeam = this.state.teams
+            newPointsTeam[teamId].imageWon = false
+            newPointsTeam[teamId].score = newPointsTeam[teamId].score - 500
+            this.setState({teams: newPointsTeam})
+            element.classList.remove("test")
+            return
+        }
+
+
+        //if other team already won
+
     }
 
     handleSelectClick = (teamId, valueId) => {
         var element = document.getElementById(valueId)
         var score = element.innerText.replace("$", "")
         var selectedElement = document.getElementById(teamId + valueId)
-        console.log("valueId", valueId)
         this.toggleOp(element.parentElement)
 
 
@@ -114,7 +140,8 @@ class Page extends React.Component {
             score: 0,
             id: newKey,
             color: this.colors[newKey],
-            won: []
+            won: [],
+            imageWon: false
         }
 
         this.setState({ teams })
@@ -133,7 +160,7 @@ class Page extends React.Component {
                     <i className="fas fa-plus-circle" onClick={() => this.addTeam()}></i>
                 </div>
 
-                <Table handleClick={this.handleSelectClick} teams={this.state.teams}> </Table>
+                <Table handleClick={this.handleSelectClick} handleImagePoints={this.handleImagePoints} teams={this.state.teams}> </Table>
             </div>
         )
     }
