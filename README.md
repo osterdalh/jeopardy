@@ -1,5 +1,5 @@
 # Jeopardy!
 
-download code -> npm install -> npm start
-or
-visit deployed page: https://osterdalh.github.io/jeopardy/
+*download code -> npm install -> npm start
+
+*visit deployed page: https://osterdalh.github.io/jeopardy/
